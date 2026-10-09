@@ -9,6 +9,7 @@ Optiboot compilado, programa de prueba y scripts de recompilación.
 | `M128A/` | ATmega128/A | Cristal ext. 16 MHz | 57600 (UART0) | PC6 (alto) | `optiboot_atmega128_16M_57600_UART0_LED_C6.hex` |
 | `M8-8MHZ/` | ATmega8/A | RC interno 8 MHz | 38400 | PB2 (**bajo**) | `optiboot_atmega8_8M_38400_LED_B2inv.hex` |
 | `M1284P/` | ATmega1284/P | Cristal 7.3728 MHz | 115200 (UART0) | PB0 (alto) | `optiboot_atmega1284p_7M3728_115200_UART0_LED_B0.hex` |
+| `M328PB/` | ATmega328PB | Cristal 7.3728 MHz | 115200 (UART0) | PB0 (alto) | `optiboot_atmega328pb_7M3728_115200_UART0_LED_B0.hex` |
 
 Flujo general por carpeta: **1)** grabar fuses + bootloader una sola vez con
 USBASP → **2)** subir programas por puerto serie con el bootloader.
@@ -91,6 +92,28 @@ avrdude -c usbasp -p m1284p -D -U flash:w:bootloader/optiboot_atmega1284p_7M3728
 pio run -e app -t upload
 # o directo con avrdude:
 avrdude -c arduino -P /dev/ttyUSB0 -b 115200 -p m1284p -U flash:w:.pio/build/app/firmware.hex:i
+pio device monitor -e app   # 9600 baud
+```
+
+---
+
+## M328PB — ATmega328PB, 7.3728 MHz, 115200 UART0, LED PB0
+
+Fuses: `lfuse 0xFF`, `hfuse 0xDE`, `efuse 0xFD`, `lock 0x3F→0x0F`.
+Firma: `1E 95 16` (distinta a la del 328P). Pinout igual al 328P.
+
+```bash
+cd M328PB
+# 1. Bootloader + fuses con USBASP (una sola vez)
+pio run -e burn_bootloader -t fuses -t bootloader
+# o directo con avrdude:
+avrdude -c usbasp -p m328pb -U lfuse:w:0xFF:m -U hfuse:w:0xDE:m -U efuse:w:0xFD:m
+avrdude -c usbasp -p m328pb -D -U flash:w:bootloader/optiboot_atmega328pb_7M3728_115200_UART0_LED_B0.hex:i -U lock:w:0x0F:m
+
+# 2. Programa de ejemplo por serie (UART0: PD0/PD1 + DTR→100nF→RESET)
+pio run -e app -t upload
+# o directo con avrdude:
+avrdude -c arduino -P /dev/ttyUSB0 -b 115200 -p m328pb -U flash:w:.pio/build/app/firmware.hex:i
 pio device monitor -e app   # 9600 baud
 ```
 

@@ -1,0 +1,20 @@
+# ── PlatformIO (regenerable con `pio run`) ──
+.pio/
+.piolibdeps/
+.pioenvs/
+
+# ── IDEs y editores ──
+.vscode/
+.idea/
+*.code-workspace
+
+# ── Sistema operativo ──
+.DS_Store
+Thumbs.db
+*~
+
+# ── Artefactos de compilación sueltos (los .hex del bootloader SÍ se versionan) ──
+*.o
+*.elf
+*.lst
+*.map

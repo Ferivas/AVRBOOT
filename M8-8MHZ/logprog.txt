@@ -1,0 +1,27 @@
+ferivas@Toshiba-Fer:~/Projects/AVRBOOT/M8-8MHZ$ avrdude -c usbasp -B 10 -p m8 -U lfuse:w:0xE4:m -U hfuse:w:0xDE:m
+Set SCK frequency to 93750 Hz
+
+Processing -U lfuse:w:0xE4:m
+Reading 1 byte for lfuse from input file 0xE4
+Writing 1 byte (0xE4) to lfuse, 1 byte written, 1 verified
+
+Processing -U hfuse:w:0xDE:m
+Reading 1 byte for hfuse from input file 0xDE
+Writing 1 byte (0xDE) to hfuse, 1 byte written, 1 verified
+
+Avrdude done.  Thank you.
+ferivas@Toshiba-Fer:~/Projects/AVRBOOT/M8-8MHZ$ avrdude -c usbasp -B 10 -p m8 -D -U flash:w:bootloader/optiboot_atmega8_8M_38400_LED_B2inv.hex:i -U lock:w:0x0F:m
+Set SCK frequency to 93750 Hz
+
+Processing -U flash:w:bootloader/optiboot_atmega8_8M_38400_LED_B2inv.hex:i
+Reading 476 bytes for flash from input file optiboot_atmega8_8M_38400_LED_B2inv.hex
+Writing 476 bytes to flash
+Writing | ################################################## | 100% 0.42 s
+Reading | ################################################## | 100% 0.28 s
+476 bytes of flash verified
+
+Processing -U lock:w:0x0F:m
+Reading 1 byte for lock from input file 0x0F
+Writing 1 byte (0x0F) to lock, 1 byte written, 1 verified
+
+Avrdude done.  Thank you.

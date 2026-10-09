@@ -1,0 +1,37 @@
+Processing burn_bootloader (platform: atmelavr; board: ATmega128)
+--------------------------------------------------------------------------------
+Verbose mode can be enabled via `-v, --verbose` option
+CONFIGURATION: https://docs.platformio.org/page/boards/atmelavr/ATmega128.html
+PLATFORM: Atmel AVR (5.3.0) > ATmega128/A
+HARDWARE: ATMEGA128 16MHz, 4KB RAM, 128KB Flash
+DEBUG: Current (simavr) External (simavr)
+PACKAGES: 
+ - tool-avrdude @ 1.60300.200527 (6.3.0) 
+ - toolchain-atmelavr @ 1.70300.191015 (7.3.0)
+LDF: Library Dependency Finder -> https://bit.ly/configure-pio-ldf
+LDF Modes: Finder ~ chain, Compatibility ~ soft
+Found 0 compatible libraries
+Scanning dependencies...
+No dependencies
+Building in release mode
+
+TARGET CONFIGURATION:
+---------------------
+Target = atmega128
+Clock speed = 16000000L
+Oscillator = external
+BOD level = 2.7v
+Save EEPROM = yes
+Bootloader type = urboot
+UART port = uart0
+JTAG enable = no
+---------------------
+
+Selected fuses: [lfuse = 0xFF, hfuse = 0xDE, efuse = 0xFF]
+Setting fuses
+========================= [SUCCESS] Took 2.05 seconds =========================
+
+Environment      Status    Duration
+---------------  --------  ------------
+burn_bootloader  SUCCESS   00:00:02.053
+========================= 1 succeeded in 00:00:02.053 =========================

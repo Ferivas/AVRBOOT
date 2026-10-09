@@ -1,0 +1,14 @@
+avrdude -c arduino -P /dev/ttyUSB0 -b 57600 -p m128 -F -U flash:w:.pio/build/app/firmware.hex:i > logprogserial.txt
+Device signature = 1E 17 02
+Warning: expected signature for ATmega128 is 1E 97 02
+Reading 212 bytes for flash from input file firmware.hex
+Writing 212 bytes to flash
+Writing | ################################################## | 100% 0.12 s
+Reading | ################################################## | 100% 0.05 s
+  device 0x14 != input 0x94 at addr 0x0001 (error)
+  showing no further verification errors (increase verbosity for more)
+  79 bytes do not match caused by 79 bit errors of which 0 set and 79 cleared on device
+  maybe flash was not erased beforehand or flash programming sections overlap?
+Error: flash verification mismatch
+
+Avrdude done.  Thank you.
